@@ -1,15 +1,21 @@
 function generateQR() {
   // Get the input values
   var description = document.getElementById("description").value;
-  var imagePath = document.getElementById("image").value;
+  var image = document.getElementById("image").files[0];
 
-  // Get the filename from the image path
-  var filename = imagePath.split("\\").pop();
+  // Build the image URL on your server
+  var imageURL = "https://example.com/images/" + image.name;
 
-  // Build the image URL on GitHub Pages
-  var username = "dad84"; // Replace with your GitHub username
-  var repository = "Peri"; // Replace with your repository name
-  var imageURL = "https://" + username + ".github.io/" + repository + "/images/" + filename;
+  // Upload the image to your server
+  var formData = new FormData();
+  formData.append("image", image);
+  fetch("https://example.com/upload", {
+    method: "POST",
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
 
   // Concatenate the input values into a single string
   var text = description + ", " + imageURL;
@@ -33,7 +39,7 @@ function sendQR() {
   var windowContent = "<!DOCTYPE html>";
   windowContent += "<html>";
   windowContent += "<head>";
-  windowContent += "<title>QR Code</title>";
+  windowContent += "<title>QR-kode</title>";
   windowContent += "</head>";
   windowContent += "<body>";
   windowContent += qrImage.outerHTML;
@@ -52,7 +58,7 @@ function downloadQR() {
   // Create a temporary link element and click it to download the QR code image
   var link = document.createElement("a");
   link.href = qrImage.src;
-  link.download = "qr-code.png";
+  link.download = "qr-kode.png";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -64,7 +70,7 @@ function printQR() {
 
   // Create a new window and write the QR code image to it
   var printWindow = window.open("", "Print", "height=400,width=600");
-  printWindow.document.write("<html><head><title>QR Code</title></head><body>");
+  printWindow.document.write("<html><head><title>QR-kode</title></head><body>");
   printWindow.document.write(qrImage.outerHTML);
   printWindow.document.write("</body></html>");
   printWindow.print();
