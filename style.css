@@ -48,7 +48,7 @@ label {
   width: 100%; /* Set the width to 100% */
   padding: 8px; /* Add some padding */
   margin-bottom: 16px; /* Add some margin on bottom */
-  border: 1px solid #d3d3d3; /* Add a border */
+    border: 1px solid #d3d3d3; /* Add a border */
   border-radius: 4px; /* Add some border radius */
   background-color: #f3f3f3; /* Add a background color */
   color: #000000; /* Set the text color */
@@ -83,7 +83,8 @@ label {
   border: 1px solid #d3d3d3; /* Add a border */
 }
 
-#qrcode {
-  margin: 0 auto;
-  text-align: center;
+/* Style the QR code container */
+.qrcode-container {
+  margin: 24px auto; /* Center the QR code container */
+  text-align: center; /* Center the QR code */
 }
