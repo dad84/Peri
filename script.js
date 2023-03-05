@@ -3,12 +3,12 @@ function generateQR() {
   var description = document.getElementById("description").value;
   var image = document.getElementById("image").value;
 
-  // Concatenate the input values into a single string
-  var text = description + ", " + image;
+  // Generate the link
+  var link = "https://example.com/?description=" + encodeURIComponent(description) + "&image=" + encodeURIComponent(image);
 
   // Generate the QR code using qrcode.js
   var qrcode = new QRCode(document.getElementById("qrcode"), {
-    text: text,
+    text: link,
     width: 256,
     height: 256,
     colorDark : "#000000",
