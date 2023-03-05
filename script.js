@@ -1,14 +1,22 @@
 function generateQR() {
   // Get the input values
   var description = document.getElementById("description").value;
-  var image = document.getElementById("image").value;
+  var imagePath = document.getElementById("image").value;
 
-  // Generate the link
-  var link = "https://example.com/?description=" + encodeURIComponent(description) + "&image=" + encodeURIComponent(image);
+  // Get the filename from the image path
+  var filename = imagePath.split("\\").pop();
+
+  // Build the image URL on GitHub Pages
+  var username = "dad84"; // Replace with your GitHub username
+  var repository = "Peri"; // Replace with your repository name
+  var imageURL = "https://" + username + ".github.io/" + repository + "/images/" + filename;
+
+  // Concatenate the input values into a single string
+  var text = description + ", " + imageURL;
 
   // Generate the QR code using qrcode.js
   var qrcode = new QRCode(document.getElementById("qrcode"), {
-    text: link,
+    text: text,
     width: 256,
     height: 256,
     colorDark : "#000000",
@@ -18,40 +26,47 @@ function generateQR() {
 }
 
 function sendQR() {
-  // Get the QR code image as a data URI
-  var qrCodeImage = document.getElementById("qrcode").getElementsByTagName("img")[0].src;
+  // Get the QR code image
+  var qrImage = document.getElementById("qrcode").getElementsByTagName("img")[0];
 
-  // TODO: Implement sending logic here
+  // Open the QR code image in a new window
+  var windowContent = "<!DOCTYPE html>";
+  windowContent += "<html>";
+  windowContent += "<head>";
+  windowContent += "<title>QR Code</title>";
+  windowContent += "</head>";
+  windowContent += "<body>";
+  windowContent += qrImage.outerHTML;
+  windowContent += "</body>";
+  windowContent += "</html>";
+  var printWindow = window.open("", "Print", "height=400,width=600");
+  printWindow.document.open();
+  printWindow.document.write(windowContent);
+  printWindow.document.close();
 }
 
 function downloadQR() {
-  // Get the QR code image as a data URI
-  var qrCodeImage = document.getElementById("qrcode").getElementsByTagName("img")[0].src;
+  // Get the QR code image
+  var qrImage = document.getElementById("qrcode").getElementsByTagName("img")[0];
 
-  // Create a link element and set its download attribute
+  // Create a temporary link element and click it to download the QR code image
   var link = document.createElement("a");
-  link.download = "qrcode.png";
-
-  // Set the href attribute to the data URI
-  link.href = qrCodeImage;
-
-  // Click the link to initiate the download
+  link.href = qrImage.src;
+  link.download = "qr-code.png";
+  document.body.appendChild(link);
   link.click();
+  document.body.removeChild(link);
 }
 
 function printQR() {
-  // Get the QR code image as a data URI
-  var qrCodeImage = document.getElementById("qrcode").getElementsByTagName("img")[0].src;
+  // Get the QR code image
+  var qrImage = document.getElementById("qrcode").getElementsByTagName("img")[0];
 
-  // Create an image element with the QR code
-  var image = new Image();
-  image.src = qrCodeImage;
-
-  // Open a new window and print the image
-  var w = window.open();
-  w.document.write("<html><head><title>QR Code</title></head><body>");
-  w.document.write(image.outerHTML);
-  w.document.write("</body></html>");
-  w.print();
-  w.close();
+  // Create a new window and write the QR code image to it
+  var printWindow = window.open("", "Print", "height=400,width=600");
+  printWindow.document.write("<html><head><title>QR Code</title></head><body>");
+  printWindow.document.write(qrImage.outerHTML);
+  printWindow.document.write("</body></html>");
+  printWindow.print();
+  printWindow.close();
 }
