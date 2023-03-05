@@ -1,0 +1,32 @@
+<html lang="no">
+  <head>
+    <meta charset="UTF-8">
+    <title>QR-kodegenerator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading">QR-kodegenerator</h1>
+      <form>
+        <label for="description">Beskrivelse:</label>
+        <input type="text" id="description" name="description" class="input-field" placeholder="Skriv en kort beskrivelse">
+
+        <label for="image">Bilde:</label>
+        <input type="file" id="image" name="image" class="input-field" accept="image/*">
+
+        <button type="button" onclick="generateQR()" class="button primary-button">Generer QR-kode</button>
+      </form>
+
+      <div id="qrcode" class="qrcode-container"></div>
+
+      <div class="button-container">
+        <button type="button" onclick="sendQR()" class="button secondary-button">Send QR-kode</button>
+        <button type="button" onclick="downloadQR()" class="button secondary-button">Last ned QR-kode</button>
+        <button type="button" onclick="printQR()" class="button secondary-button">Skriv ut QR-kode</button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

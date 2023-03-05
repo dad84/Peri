@@ -1,0 +1,84 @@
+/* Set box sizing to border-box for all elements */
+* {
+  box-sizing: border-box;
+}
+
+/* Set body background color, text color, font, and size */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: Segoe UI, sans-serif;
+  font-size: 16px;
+}
+
+/* Style the container div */
+.container {
+  max-width: 480px; /* Set maximum width of container */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 24px; /* Add some padding around the container */
+  border: 1px solid #d3d3d3; /* Add a border around the container */
+  border-radius: 8px; /* Add some border radius to the corners */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Add a box shadow */
+}
+
+/* Style the heading */
+.heading {
+  margin-top: 0; /* Remove default margin on top */
+  margin-bottom: 24px; /* Add some margin on bottom */
+  font-size: 24px; /* Increase font size */
+  font-weight: bold; /* Add some boldness */
+  text-align: center; /* Center the text */
+}
+
+/* Style the form */
+form {
+  margin-bottom: 24px; /* Add some margin on bottom */
+}
+
+/* Style the label */
+label {
+  display: block; /* Make the label a block element */
+  margin-bottom: 8px; /* Add some margin on bottom */
+  font-weight: bold; /* Add some boldness */
+}
+
+/* Style the input fields */
+.input-field {
+  display: block; /* Make the input field a block element */
+  width: 100%; /* Set the width to 100% */
+  padding: 8px; /* Add some padding */
+  margin-bottom: 16px; /* Add some margin on bottom */
+  border: 1px solid #d3d3d3; /* Add a border */
+  border-radius: 4px; /* Add some border radius */
+  background-color: #f3f3f3; /* Add a background color */
+  color: #000000; /* Set the text color */
+  font-size: 16px; /* Set the font size */
+}
+
+/* Style the button container */
+.button-container {
+  display: flex; /* Use flexbox to align buttons */
+  justify-content: space-between; /* Add space between buttons */
+}
+
+/* Style the buttons */
+.button {
+  padding: 8px 16px; /* Add some padding */
+  border: none; /* Remove the border */
+  border-radius: 4px; /* Add some border radius */
+  font-size: 16px; /* Set the font size */
+  cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+/* Style the primary button */
+.primary-button {
+  color: #ffffff; /* Set the text color to white */
+  background-color: #0078d7; /* Set the background color to blue */
+}
+
+/* Style the secondary buttons */
+.secondary-button {
+  color: #000000; /* Set the text color to black */
+  background-color: #f3f3f3; /* Set the background color to light gray */
+  border: 1px solid #d3d3d3; /* Add a border */
+}
